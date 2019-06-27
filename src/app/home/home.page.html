@@ -105,11 +105,11 @@
       </ion-col>
     </ion-row>
     <ion-row justify-content-around>
-      <ion-col class='ion-activatable' (click)="openDetalis('البويات', 'paints')">
+      <ion-col class='ion-activatable' (click)="openDetalis('الحدايد والبويات', 'paints')">
         <ion-ripple-effect></ion-ripple-effect>
         <div >
           <img src="assets/icon/paints.jpg" />
-          <span>البويات</span>
+          <span>الحدايد والبويات</span>
         </div>
       </ion-col>
       <ion-col class='ion-activatable' (click)="openDetalis('النادى الرياضى', 'gym')">
@@ -174,7 +174,7 @@
       </ion-col>
     </ion-row>
     <ion-row justify-content-around class="last-row">
-      <ion-col class="rad-b-right" (click)="openDetalis('مقله وتسالى', 'penaut')">
+      <ion-col (click)="openDetalis('مقله وتسالى', 'penaut')">
         <ion-ripple-effect></ion-ripple-effect>
         <div >
           <img src="assets/icon/penaut.jpeg" />
@@ -188,12 +188,28 @@
           <span>مراكز السيارات</span>
         </div>
       </ion-col>
-      <ion-col class="rad-b-left" (click)="openDetalis('المهن الإخرى', 'workers')">
+      <ion-col (click)="openDetalis('المهن الإخرى', 'workers')">
         <div >
           <img src="assets/icon/workers.png" />
           <span>المهن الإخرى</span>
         </div>
       </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col (click)="openDetalis('المحامين', 'low')">
+            <ion-ripple-effect></ion-ripple-effect>
+            <div >
+              <img src="assets/icon/low.jpeg" />
+              <span>المحامين</span>
+            </div>
+          </ion-col>
+          <ion-col (click)="openDetalis('الادوات الصحية', 'pulp')">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div >
+                <img src="assets/icon/pulp.jpeg" />
+                <span>الادوات الصحية</span>
+              </div>
+          </ion-col>
     </ion-row>
     <ion-row class='btnAdd'>
       <ion-col>

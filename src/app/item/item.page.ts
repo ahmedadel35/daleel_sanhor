@@ -61,6 +61,26 @@ export class ItemPage implements OnInit {
     toast.present();
   }
 
+  defaultImage(): string {
+    const jpg = [
+      'beauty', 'doctors', 'eng', 'paints', 'teachers'
+    ];
+    const jpeg = [
+      'camera', 'car', 'low', 'penaut', 'pulp', 'vegtable'
+    ];
+
+    let img_name = this.page_name;
+
+    if (jpg.indexOf(img_name) > -1) {
+      img_name += '.jpg';
+    } else if(jpeg.indexOf(img_name) > -1) {
+      img_name += '.jpeg';
+    } else {
+      img_name += '.png';
+    }
+    return img_name;
+  }
+
   // searchBar(name: string) {
   //   console.log(data);
   // }

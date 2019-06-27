@@ -23,16 +23,15 @@ ion-col img{
   height: 8vh;
   display: block;
 }
-
-.rad-t-left{
-  border-radius: 50% 0 0 0;
-}
-.rad-t-right{
+ion-row:first-of-type ion-col:first-of-type {
   border-radius: 0 50% 0 0;
 }
-.rad-b-left{
-  border-radius: 0 0 0 50%;
+ion-row:first-of-type ion-col:last-of-type {
+  border-radius: 50% 0 0 0;
 }
-.rad-b-right{
+ion-row:nth-last-of-type(2) ion-col:first-of-type{
   border-radius: 0 0 50px 0;
+}
+ion-row:nth-last-of-type(2) ion-col:last-of-type {
+  border-radius: 0 0 0 50%;
 }
