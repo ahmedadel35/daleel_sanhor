@@ -23,14 +23,6 @@
       <ion-row justify-content-around>
         <ion-col *ngFor="let i of data" size='6'>
             <ion-card text-center shape='round'>
-                <ion-item>
-                    <ion-button fill="clear" slot="start" size="small" color='success' ngClick='call(i.tells[0])'>
-                        <ion-icon slot="icon-only" name="call"></ion-icon>
-                    </ion-button>
-                    <ion-button fill="clear" slot="end" size="small" color='danger'>
-                        <ion-icon slot="icon-only" name="pin"></ion-icon>
-                    </ion-button>
-                  </ion-item>
                 <ion-card-header> 
                   <img *ngIf="i.img.length" class="card-img" src="assets/data_icons/{{i.img}}" />
                   <img *ngIf="!i.img.length" class="card-img" src="assets/icon/{{defaultImage()}}" />
@@ -41,9 +33,12 @@
                   <p>
                     {{i.address}}
                   </p>
-                  <ul *ngFor="let n of i.tells">
-                    <li>{{n}}</li>
-                  </ul>
+                  <ion-item *ngIf="i.tells[0]">
+                      <ion-button fill="outline" shape='round' color='primary' ngClick='call(i.tells[0])'>
+                          <ion-icon slot="start" name="call"></ion-icon>
+                          {{i.tells[0]}}
+                      </ion-button>
+                  </ion-item>
                 </ion-card-content>
               </ion-card>
         </ion-col>
