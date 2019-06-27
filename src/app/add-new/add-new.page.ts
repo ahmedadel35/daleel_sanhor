@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
+
+import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'app-add-new',
