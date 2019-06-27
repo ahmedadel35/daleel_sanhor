@@ -1,0 +1,28 @@
+img{
+    width: 100%;
+    margin-bottom: 3vw;
+    padding: 1vw;
+    border: 1px solid gray;
+    background-color: #eee;
+    border-radius: 6px;
+}
+#contact{
+    // padding-bottom: 2vh;
+}
+#contact span{
+    color: #000;
+}
+#contact strong{
+    padding-right: 2vh;
+}
+#rights{
+    text-transform: capitalize;
+    font-variant: small-caps;
+}
+#rights a,
+#rights a:visited,
+#rights a:hover,
+#rights a:active{
+    text-decoration: none;
+    color: #000;
+}

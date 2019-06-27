@@ -12,12 +12,27 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Home',
+      name: 'الرئيسية',
       url: '/home',
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'AddNew',
+      name: 'أضف جديد',
+      url: '/add-new',
+      icon: 'add-circle'
+    }
+    ,
+    {
+      title: 'About',
+      name: 'من نحن',
+      url: '/about',
+      icon: 'information-circle'
+    },
+    {
+      title: 'Item',
+      name: '',
+      url: '/item',
       icon: 'list'
     }
   ];

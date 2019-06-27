@@ -4,3 +4,15 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+@font-face{
+    font-family: "DroidKufi";
+    src: url("../assets/fonts/DroidArabicKufiRegular.ttf") format('truetype');
+  }
+  .home-bg{
+    background: gray url("../assets/img/home_bg.jpeg") fixed top left no-repeat;
+    background-size: cover;
+  }
+  ion-content, ion-row, ion-title, ion-card *{
+    font-family: "DroidKufi", Helvetica, sans-serif, Arial;
+    font-size: small;
+  }

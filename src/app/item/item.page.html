@@ -1,0 +1,51 @@
+<ion-header dir="rtl">
+    <ion-toolbar color='primary'>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+          {{page_title}}
+        </ion-title>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content dir="rtl">
+    <ion-grid fixed>
+      <!-- <ion-row justify-content-around>
+        <form #searchForm="ngForm" (ngSubmit)="searchBar(form)">
+            <ion-item>
+                <ion-label position="floating" color="primary">بحث</ion-label>
+                <ion-input dir='rtl' type="text" name='q' class="form-controll" ngModel required>
+                </ion-input>
+              </ion-item>
+        </form>
+      </ion-row> -->
+      <ion-row justify-content-around>
+        <ion-col *ngFor="let i of data" size='6'>
+            <ion-card text-center shape='round'>
+                <ion-item>
+                    <ion-button fill="clear" slot="start" size="small" color='success' ngClick='call(i.tells[0])'>
+                        <ion-icon slot="icon-only" name="call"></ion-icon>
+                    </ion-button>
+                    <ion-button fill="clear" slot="end" size="small" color='danger'>
+                        <ion-icon slot="icon-only" name="pin"></ion-icon>
+                    </ion-button>
+                  </ion-item>
+                <ion-card-header> 
+                  <img class="card-img" src="assets/data_icons/{{i.img}}" />
+                  <ion-card-title>{{i.title}}</ion-card-title>
+                </ion-card-header>
+              
+                <ion-card-content>
+                  <p>
+                    {{i.address}}
+                  </p>
+                  <ul *ngFor="let n of i.tells">
+                    <li>{{n}}</li>
+                  </ul>
+                </ion-card-content>
+              </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

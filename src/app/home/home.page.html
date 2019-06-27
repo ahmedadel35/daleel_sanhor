@@ -1,44 +1,207 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header dir="rtl">
+  <ion-toolbar color='primary'>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      الرئيسية
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+<ion-content dir="rtl">
+  <ion-grid class="home-bg">
+    <ion-row justify-content-around class="first-row">
+      <ion-col class="ion-activatable rad-t-right"
+       (click)="openDetalis('المطاعم', 'resturants')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div>
+          <img src="assets/icon/food.png" />
+          <span>المطاعم</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('سوبر ماركت', 'shops')"> 
+        <ion-ripple-effect></ion-ripple-effect>
+        <div>
+          <img src="assets/icon/shops.png" />
+          <span>سوبر ماركت</span>
+        </div>
+      </ion-col>
+      <ion-col class="ion-activatable rad-t-left" (click)="openDetalis('الحلوانى', 'donut')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/donut.png" />
+          <span>الحلوانى</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col class='ion-activatable' (click)="openDetalis('الصيدليات', 'pharmasy')"> 
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/pharmasy.png" />
+          <span>الصيدليات</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('الأدوات المنزلية', 'cleaner')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/cleaner.png" />
+          <span>الأدوات المنزلية</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('بيوتى سنتر', 'beauty')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/beauty.jpg" />
+          <span>بيوتى سنتر</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col class='ion-activatable' (click)="openDetalis('مراكز تعليم', 'school')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/school.png" />
+          <span>مراكز تعليم</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('معامل التحاليل', 'experments')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/experments.png" />
+          <span>معامل التحاليل</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('الأطباء', 'doctors')"> 
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/doctors.jpg" />
+          <span>الأطباء</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col class='ion-activatable' (click)="openDetalis('المهندسين', 'eng')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div  >
+          <img src="assets/icon/eng.jpg" />
+          <span>المهندسين</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('المدرسين', 'teachers')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div  >
+          <img src="assets/icon/teachers.jpg" />
+          <span>المدرسين</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('الأدوات المدرسية', 'gadgets')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div  >
+          <img src="assets/icon/gadgets.png" />
+          <span>المكتبات</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col class='ion-activatable' (click)="openDetalis('البويات', 'paints')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/paints.jpg" />
+          <span>البويات</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('النادى الرياضى', 'gym')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/gym.png" />
+          <span>النادى الرياضى</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('التصوير', 'camera')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/camera.jpeg" />
+          <span>التصوير</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col class='ion-activatable' (click)="openDetalis('المستشفيات', 'hosbital')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/hosbital.png" />
+          <span>المستشفيات</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('موبيلات وكمبيوتر', 'mobile')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/mobile.png" />
+          <span>موبيلات وكمبيوتر</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('بلاى ستيشن', 'ps')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/ps.png" />
+          <span>بلاى ستيشن</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col class='ion-activatable' (click)="openDetalis('الملابس', 'clothes')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/clothes.png" />
+          <span>الملابس</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('الهدايا والعطور', 'gifts')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/gifts.png" />
+          <span>الهدايا والعطور</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('العطارة ومستلزمات المطبخ', 'vegtable')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/vegtable.jpeg" />
+          <span>العطارة ومستلزمات المطبخ</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around class="last-row">
+      <ion-col class="rad-b-right" (click)="openDetalis('مقله وتسالى', 'penaut')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div >
+          <img src="assets/icon/penaut.jpeg" />
+          <span>مقله وتسالى</span>
+        </div>
+      </ion-col>
+      <ion-col class='ion-activatable' (click)="openDetalis('مراكز السيارات', 'car')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div  >
+          <img src="assets/icon/car.jpeg" />
+          <span>مراكز السيارات</span>
+        </div>
+      </ion-col>
+      <ion-col class="rad-b-left" (click)="openDetalis('المهن الإخرى', 'workers')">
+        <div >
+          <img src="assets/icon/workers.png" />
+          <span>المهن الإخرى</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class='btnAdd'>
+      <ion-col>
+        <ion-button expand='full' color='primary' shape='round' fill='solid' size='large' (click)="goToAdd()">
+          <ion-icon name='add' slot='start'></ion-icon>
+        أضف المزيد
+      </ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

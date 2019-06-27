@@ -1,4 +1,38 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-row{
+  background: linear-gradient(45deg, rgba(113, 20, 20, 0.9), rgba(13, 16, 45, 0.9));
+}
+ion-row.btnAdd,
+.btnAdd ion-col{
+  background-color: transparent;
+  border: none;
+}
+ion-col{
+  text-align: center;
+  // /*padding: 2vh 2vh;*/
+  margin: .5vh;
+  border: 1px solid #eee;
+  border-radius: 0;
+  line-height: 4vh;
+  cursor: pointer;
+  color: #fff;
+}
+
+ion-col img{
+  margin: 0 auto;
+  width: 8vh;
+  height: 8vh;
+  display: block;
+}
+
+.rad-t-left{
+  border-radius: 50% 0 0 0;
+}
+.rad-t-right{
+  border-radius: 0 50% 0 0;
+}
+.rad-b-left{
+  border-radius: 0 0 0 50%;
+}
+.rad-b-right{
+  border-radius: 0 0 50px 0;
 }

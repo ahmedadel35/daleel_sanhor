@@ -1,0 +1,46 @@
+<ion-header dir="rtl">
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        أضف المزيد
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content dir="rtl">
+    <form #form="ngForm" (ngSubmit)="sendData(form)" enctype="multipart/form-data" padding> 
+        <ion-list>
+          <ion-list-header>اختر</ion-list-header>
+          <ion-item>
+            <ion-label>القسم</ion-label>
+            <ion-select interface="popover" color="primary" name='section' placeholder="المطاعم مثلا.." ngModel required>
+              <ion-select-option *ngFor="let i of all_sections; let x = index" value="{{x}}">
+                {{i}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-label position="floating" color="primary">الإسم</ion-label>
+          <ion-input dir='rtl' type="text" name='title' class="form-controll" maxlength="50" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" color="tertiary">العنوان</ion-label>
+          <ion-input dir='rtl' type="text" name='adress' class="form-controll" maxlength='140' ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" color="secondary">رقم التليفون</ion-label>
+          <ion-input dir='ltr' type="text" name='tel' class="form-controll" maxlength="15" ngModel></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" color="primary">الصوره</ion-label>
+          <ion-input id='img' type="file" name='img' class="form-controll" ngModel></ion-input>
+        </ion-item>
+        <ion-button type="submit" size="large" expand='block'
+                fill="solid" [disabled]="form.invalid">
+                حفظ
+        </ion-button>
+    </form>
+</ion-content>
