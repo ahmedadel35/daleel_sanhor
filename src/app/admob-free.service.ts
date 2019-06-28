@@ -27,7 +27,7 @@ export class AdmobFreeService {
     this.admobFree.banner.config(bannerConfig);
 
     this.admobFree.banner.prepare().then(() => {
-      console.log('banner working');
+      // console.log('banner working');
     }).catch(e => console.log('banner error: ', e));
   }
 
@@ -41,7 +41,7 @@ export class AdmobFreeService {
     this.admobFree.interstitial.config(interConfig);
       // Prepare Ad to Show
     this.admobFree.interstitial.prepare().then(() => {
-      console.log('prepared');
+      // console.log('prepared');
       this.admobFree.interstitial.isReady().then()
         .catch(e => console.log('isReady ' + e));
     }).catch(e => console.log(e));

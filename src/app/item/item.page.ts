@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 import { AdmobFreeService } from '../admob-free.service';
 
@@ -20,9 +21,11 @@ export class ItemPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private storage: Storage,
               private admobFreeService: AdmobFreeService,
               public toast: ToastController,
               private callNumber: CallNumber) {
+    // get params from route
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         // get page name and title from state
@@ -31,9 +34,9 @@ export class ItemPage implements OnInit {
 
         // load data from json file
         // with the same item name
-        fetch('../../assets/data/' + this.page_name + '.json')
-          .then(res => res.json())
+        this.storage.get(this.page_name)
           .then(json => {
+            json = JSON.parse(json);
             if (json.length) {
               this.data = json;
             } else {
@@ -44,8 +47,6 @@ export class ItemPage implements OnInit {
             }
           })
           .catch(error => { // error mostly will be json fileNotExists
-            // console.log(error);
-
             // show toast to inform user it is empty section
             this.presentToast();
             // go to add-new page
@@ -89,15 +90,11 @@ export class ItemPage implements OnInit {
   }
 
   call(num) {
-    num = num.toString();
+    // num = num.toString();
     this.callNumber.callNumber(num, true)
     .then(res => console.log('lanshed dialer', res))
     .catch(err => console.log('error', err));
   }
-
-  // searchBar(name: string) {
-  //   console.log(data);
-  // }
 
   ionViewWillEnter() {
     this.admobFreeService.BannerAd();

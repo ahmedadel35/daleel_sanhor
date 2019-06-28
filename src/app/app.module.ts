@@ -27,7 +27,10 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     FileUploadModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot({
+      name: '__daleelsahnordb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { error } from '@angular/compiler/src/util';
 
 import { FileUploader, FileSelectDirective, FileLikeObject  } from 'ng2-file-upload';
 
@@ -142,7 +141,8 @@ export class AddNewPage implements OnInit {
     this.busy = true;
     if (!this.loader) {
       this.loader = await this.loaderCtrl.create({
-        backdropDismiss: true
+        backdropDismiss: true,
+        duration: 9000
       });
     }
     await this.loader.present();
@@ -150,7 +150,7 @@ export class AddNewPage implements OnInit {
 
   async hideLoader() {
     this.busy = false;
-    if(this.loader) {
+    if (this.loader) {
       await this.loader.dismiss();
     }
   }
