@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router, NavigationExtras} from '@angular/router';
 
+import { Storage } from '@ionic/storage';
 import { AdmobFreeService } from '../admob-free.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class HomePage {
 
   constructor(
     private router: Router,
+    private storage: Storage,
     private admobFreeService: AdmobFreeService) {}
 
     openDetalis(title, name) {
