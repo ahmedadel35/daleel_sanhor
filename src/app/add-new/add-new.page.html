@@ -16,7 +16,7 @@
           <ion-item>
             <ion-label>القسم</ion-label>
             <ion-select interface="popover" color="primary" name='section' placeholder="المطاعم مثلا.." ngModel required>
-              <ion-select-option *ngFor="let i of all_sections; let x = index" value="{{x}}">
+              <ion-select-option *ngFor="let i of allSections; let x = index" value="{{x}}">
                 {{i}}
               </ion-select-option>
             </ion-select>
@@ -31,15 +31,24 @@
           <ion-input dir='rtl' type="text" name='adress' class="form-controll" maxlength='140' ngModel required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="floating" color="secondary">رقم التليفون</ion-label>
-          <ion-input dir='ltr' type="text" name='tel' class="form-controll" maxlength="15" ngModel></ion-input>
+          <ion-label position="floating" color="secondary">رقم الهاتف</ion-label>
+          <ion-input dir='ltr' type="number" name='tel' class="form-controll" maxlength="15" ngModel></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="floating" color="primary">الصوره</ion-label>
-          <ion-input id='img' type="file" name='img' class="form-controll" ngModel></ion-input>
+          <ion-button fill='outline' class="fileUpload" size='medium' color='primary' [disabled]="busy">
+              <ion-icon name="camera"></ion-icon>
+              <span>رفع صورة</span>
+              <input id='img' class="form-controll upload" type="file" ng2FileSelect [uploader]="uploader" />
+          </ion-button>
+          <!-- <input id='img' name='img' class="form-controll upload" type="file" ng2FileSelect [uploader]="uploader" accept=".jpg, .jpeg, .png"/> -->
         </ion-item>
+        <ion-list class="imageView">
+          <div *ngFor="let item of uploader.queue; let first = first;">
+            <img src="" thumbnail [image]="item?._file"/>
+          </div>
+        </ion-list>
         <ion-button type="submit" size="large" expand='block'
-                fill="solid" [disabled]="form.invalid">
+                fill="solid" [disabled]="form.invalid || busy">
                 حفظ
         </ion-button>
     </form>

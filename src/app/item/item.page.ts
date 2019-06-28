@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastController } from '@ionic/angular';
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.page.html',
@@ -16,7 +18,8 @@ export class ItemPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              public toast: ToastController) {
+              public toast: ToastController,
+              private callNumber: CallNumber) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         // get page name and title from state
@@ -56,7 +59,8 @@ export class ItemPage implements OnInit {
     const toast = await this.toast.create({
       message: 'لا يتوفر بيانات بهذا القسم ساعدنا بإضافة المزيد',
       duration: 2000,
-      showCloseButton: true
+      showCloseButton: true,
+      closeButtonText: 'إغلاق'
     });
     toast.present();
   }
@@ -79,6 +83,13 @@ export class ItemPage implements OnInit {
       img_name += '.png';
     }
     return img_name;
+  }
+
+  call(num) {
+    num = num.toString();
+    this.callNumber.callNumber(num, true)
+    .then(res => console.log('lanshed dialer', res))
+    .catch(err => console.log('error', err));
   }
 
   // searchBar(name: string) {

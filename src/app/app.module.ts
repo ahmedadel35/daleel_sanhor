@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FileUploadModule } from 'ng2-file-upload';
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,6 +28,7 @@ import { FileUploadModule } from 'ng2-file-upload';
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

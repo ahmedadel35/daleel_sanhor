@@ -3,8 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { error } from '@angular/compiler/src/util';
 
-import { FileUploader, FileLikeObject } from 'ng2-file-upload';
-import { concat } from 'rxjs';
+import { FileUploader, FileSelectDirective, FileLikeObject  } from 'ng2-file-upload';
+
+import { ToastController, LoadingController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+// import { concat } from 'rxjs';
+
+const DOMAIN = 'http://localhost:80/daleel/';
+const URL = DOMAIN + 'api/create.php';
+
+const SIZE_LIMIT = 1024000; // 1mb
+const ALLOWED_TYPES = ['jpg', 'jpeg', 'png'];
 
 @Component({
   selector: 'app-add-new',
@@ -13,7 +22,7 @@ import { concat } from 'rxjs';
 })
 export class AddNewPage implements OnInit {
 
-    public all_sections = [
+    public allSections = [
         'المطاعم',
         'سوبر ماركت',
         'الحلوانى',
@@ -40,61 +49,138 @@ export class AddNewPage implements OnInit {
         'المهن الإخرى'
     ];
 
-  constructor( public http: HttpClient ) {
-    this.http.get('http://localhost:80/daleel/api/create.php')
-      .subscribe(res => {
-        console.log(res);
+    public uploader: FileUploader = new FileUploader({
+      url: URL,
+      headers: [{name : 'Content-Type', value : 'application/x-www-form-urlencoded'}],
+      method: 'post',
+      allowedFileType: ['image'],
+    });
+
+    private token = '$2y$10$oLEwL4QeFfHEdTOeGtVBCucqnfP1buY';
+
+    public loader: any;
+    public busy = false;
+
+  constructor(
+    public http: HttpClient,
+    public toast: ToastController,
+    public loaderCtrl: LoadingController ) {}
+
+  uploadImage(): Promise<string> {
+    const file = this.uploader.queue[0].file;
+    const formData = new FormData();
+    formData.append('token', this.token);
+    formData.append('req', 'upload');
+    formData.append('img', file.rawFile, file.name);
+
+    return new Promise((resolve, reject) => {
+      this.http.post<{name: string}>(URL, formData)
+        .subscribe(res => {
+          if (res && res.name && res.name.length) {
+            resolve(res.name); // uploaded image name
+          }
+          reject(res); // return error
+        }, err => {
+          reject(err);
       });
+    });
   }
 
   sendData(form) {
-    const token = '$2y$10$oLEwL4QeFfHEdTOeGtVBCucqnfP1buY';
-    const domain = 'http://localhost:80/daleel/';
-    const url = domain + 'api/create.php';
-
     const f = form.value;
-
     const reqOpts = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
       })
     };
 
-    const img = document.querySelector('#img input');
+    // validate form before upload image
+    if (!f.section.length
+      || !f.title.length
+      || !f.adress.length) {
+        return false;
+    }
 
-    console.log(f);
+    // show loader
+    this.showLoader();
 
-    const body = 'token=' + token + '&cat=' + f.section + '&name='
-      + f.title
-      + '&address=' + f.adress + '&tell=' + f.tel
-      + '&img=' + img;
+    this.uploadImage().then(imgName => {
+      const body = 'req=create&token=' + this.token + '&cat='
+        + f.section + '&name=' + f.title + '&address=' + f.adress
+        + '&tell=' + f.tel + '&img=' + imgName;
 
-    // this.http.post(url, body, reqOpts)
-    //     .subscribe(res => {
-    //         console.log(res);
-    //     }, err => {
-    //         console.error('error');
-    //         console.log(err.error.text);
-    //         console.log(err);
-    //     });
+      this.http.post(URL, body, reqOpts)
+        .subscribe(res => {
+            console.log(res);
+            this.hideLoader();
+            if (res === true) {
+              this.presentToast('تم الحفظ بنجاح');
+            }
+        }, err => {
+          this.hideLoader();
+          this.presentToast('حدث خطأ غير متوقع برجاء إعادة المحاولة');
+      });
+    })
+    .catch(err => {
+      this.hideLoader();
+      this.presentToast('حدث خطأ غير متوقع برجاء إعادة المحاولة');
+    });
+  }
 
-    // const formData = new FormData();
-    // formData.append('img', img);
-    // formData.append('name', f.title);
-    // formData.append('address', f.address);
-    // formData.append('tell', f.tel);
-    // formData.append('cat', f.section);
-    // formData.append('token', token);
-    
-    // fetch(url, {
-    //   method: 'POST',
-    //   body: formData
-    // }).then(res => res.text())
-    // .then(res => console.log(res));
+  async presentToast(mes) {
+    const toast = await this.toast.create({
+      message: mes,
+      duration: 1500,
+      showCloseButton: true,
+      closeButtonText: 'إغلاق'
+    });
+    toast.present();
+  }
 
+  async showLoader() {
+    this.busy = true;
+    if (!this.loader) {
+      this.loader = await this.loaderCtrl.create({
+        backdropDismiss: true
+      });
+    }
+    await this.loader.present();
+  }
+
+  async hideLoader() {
+    this.busy = false;
+    if(this.loader) {
+      await this.loader.dismiss();
+    }
   }
 
   ngOnInit() {
+    // select only one image
+    this.uploader.onAfterAddingFile = file => {
+      file.withCredentials = false;
+
+      // limit queue to one image and update if another choosed
+      if (this.uploader.queue.length > 1) {
+        this.uploader.queue.shift();
+        this.uploader.queue.length = 1;
+      }
+
+      // filter image
+      const img = file.file;
+      if (img.size > SIZE_LIMIT) {
+        this.presentToast('يجب أن لا يتعدى حجم الصورة 1 ميجا');
+        this.uploader.queue.length = 0;
+      } else if (ALLOWED_TYPES.indexOf(img.type.split('/')[1]) < 1) {
+        this.presentToast('الملف غير مدعوم');
+        this.uploader.queue.length = 0;
+      }
+
+    };
+
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('FileUpload:uploaded:', item, status, response);
+    };
+
   }
 
 }

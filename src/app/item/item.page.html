@@ -34,7 +34,7 @@
                     {{i.address}}
                   </p>
                   <ion-item *ngIf="i.tells[0]">
-                      <ion-button fill="outline" shape='round' color='primary' ngClick='call(i.tells[0])'>
+                      <ion-button fill="outline" shape='round' color='primary' (click)='call(i.tells[0])'>
                           <ion-icon slot="start" name="call"></ion-icon>
                           {{i.tells[0]}}
                       </ion-button>

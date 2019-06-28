@@ -7,6 +7,10 @@ import { IonicModule } from '@ionic/angular';
 
 import { AddNewPage } from './add-new.page';
 
+import {FileUploadModule} from "ng2-file-upload";
+
+import { ThumbnailDirective  } from '../directives/thumbnail-directive.directive';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +23,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FileUploadModule
   ],
-  declarations: [AddNewPage]
+  declarations: [AddNewPage, ThumbnailDirective]
 })
 export class AddNewPageModule {}

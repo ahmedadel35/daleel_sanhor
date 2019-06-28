@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CallNumber } from '@ionic-native/call-number/ngx';
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.page.html',
@@ -7,16 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPage implements OnInit {
 
-  constructor() { }
+  constructor(private callNumber: CallNumber) { }
 
-  // copyText(){
-  //   let num = document.getElementById('tell-number');
-
-  //   num.select();
-  //   document.execCommand('copy');
-  //   console.log(num.innerHtml);
-
-  // }
+  call(num) {
+    this.callNumber.callNumber(num, true)
+    .then(res => console.log('lanshed dialer', res))
+    .catch(err => console.log('error', err));
+  }
 
   ngOnInit() {
   }
