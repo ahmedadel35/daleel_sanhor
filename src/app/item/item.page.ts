@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { AdmobFreeService } from '../admob-free.service';
+
 import { ToastController } from '@ionic/angular';
 
 import { CallNumber } from '@ionic-native/call-number/ngx';
@@ -18,6 +20,7 @@ export class ItemPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
+              private admobFreeService: AdmobFreeService,
               public toast: ToastController,
               private callNumber: CallNumber) {
     this.route.queryParams.subscribe(params => {
@@ -95,6 +98,10 @@ export class ItemPage implements OnInit {
   // searchBar(name: string) {
   //   console.log(data);
   // }
+
+  ionViewWillEnter() {
+    this.admobFreeService.BannerAd();
+  }
 
   ngOnInit() {
     // runs twice so no need to do anything here

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router, NavigationExtras} from '@angular/router';
 
+import { AdmobFreeService } from '../admob-free.service';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +15,16 @@ export class HomePage {
       name: ''
     };
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private admobFreeService: AdmobFreeService) {}
 
     openDetalis(title, name) {
         this.page = {
           title,
           name
         };
-        let navExtras: NavigationExtras = {
+        const navExtras: NavigationExtras = {
             state: {
                 page: this.page
             }
@@ -32,6 +35,16 @@ export class HomePage {
     goToAdd() {
       this.router.navigate(['add-new']);
     }
-  
+
+    ionViewWillEnter() {
+      this.admobFreeService.BannerAd();
+    }
+
+    ionViewDidEnter() {
+      if (!sessionStorage.getItem('user')) {
+        this.admobFreeService.InterstitialAd();
+        sessionStorage.setItem('user', 'ok');
+      }
+    }
 
 }

@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from 'ng2-file-upload';
 
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
+
+import { AdmobFreeService } from './admob-free.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +32,8 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
     StatusBar,
     SplashScreen,
     CallNumber,
+    AdMobFree,
+    AdmobFreeService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

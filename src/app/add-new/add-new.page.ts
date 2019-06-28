@@ -6,8 +6,8 @@ import { error } from '@angular/compiler/src/util';
 import { FileUploader, FileSelectDirective, FileLikeObject  } from 'ng2-file-upload';
 
 import { ToastController, LoadingController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-// import { concat } from 'rxjs';
+
+import { AdmobFreeService } from '../admob-free.service';
 
 const DOMAIN = 'http://localhost:80/daleel/';
 const URL = DOMAIN + 'api/create.php';
@@ -64,7 +64,8 @@ export class AddNewPage implements OnInit {
   constructor(
     public http: HttpClient,
     public toast: ToastController,
-    public loaderCtrl: LoadingController ) {}
+    public loaderCtrl: LoadingController,
+    private admobFreeService: AdmobFreeService ) {}
 
   uploadImage(): Promise<string> {
     const file = this.uploader.queue[0].file;
@@ -152,6 +153,10 @@ export class AddNewPage implements OnInit {
     if(this.loader) {
       await this.loader.dismiss();
     }
+  }
+
+  ionViewWillEnter() {
+    this.admobFreeService.BannerAd();
   }
 
   ngOnInit() {
