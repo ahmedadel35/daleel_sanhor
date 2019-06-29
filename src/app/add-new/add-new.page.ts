@@ -45,7 +45,9 @@ export class AddNewPage implements OnInit {
         'العطارة ومستلزمات المطبخ',
         'مقله وتسالى',
         'مراكز السيارات',
-        'المهن الإخرى'
+        'المهن الإخرى',
+		'المحامين',
+		'الادوات الصحية'
     ];
 
     public uploader: FileUploader = new FileUploader({

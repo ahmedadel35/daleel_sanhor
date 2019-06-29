@@ -30,6 +30,12 @@ export class AppComponent {
       icon: 'information-circle'
     },
     {
+      title: 'Update',
+      name: 'تحديث',
+      url: '/update',
+      icon: 'download'
+    },
+    {
       title: 'Item',
       name: '',
       url: '/item',

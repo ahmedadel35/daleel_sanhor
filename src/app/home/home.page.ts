@@ -18,11 +18,10 @@ export class HomePage {
     };
 
     private jsonFiles = [
-      'beauty', 'camera', 'car', 'cleaner', 'clothes', 'doctors',
-      'donut', 'eng', 'experments', 'gadgets', 'gifts', 'gym',
-      'hosbital', 'low', 'mobile', 'paints', 'penaut', 'pharmasy',
-      'ps', 'pulp', 'resturants', 'school', 'shops', 'teachers',
-      'vegtable', 'workers'
+      'resturants', 'shops', 'donut', 'pharmasy', 'cleaner', 'beauty',
+       'school', 'experments', 'doctors', 'eng', 'teachers', 'gadgets',
+       'paints', 'gym', 'camera', 'hosbital', 'mobile', 'ps', 'clothes',
+       'gifts', 'vegtable', 'penaut', 'car', 'low', 'pulp', 'workers'  
     ];
 
     public loader: any;
@@ -48,7 +47,7 @@ export class HomePage {
             if (jsF === 'vegtable' || jsF === 'workers') {
               this.storage.set('all_data_stored', true)
                 .then(_ => {
-                  console.log('saved');
+                  this.storage.set('update_token', '0123456789190605');
                   this.hideLoader();
                 });
             }
