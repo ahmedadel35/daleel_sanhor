@@ -18,7 +18,7 @@ export class AppComponent {
     },
     {
       title: 'AddNew',
-      name: 'أضف جديد',
+      name: 'إضافة المزيد',
       url: '/add-new',
       icon: 'add-circle'
     }
@@ -31,7 +31,7 @@ export class AppComponent {
     },
     {
       title: 'Update',
-      name: 'تحديث',
+      name: 'تحديث البيانات',
       url: '/update',
       icon: 'download'
     },
@@ -55,7 +55,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString('#488aff');
-      this.splashScreen.hide();
+      setTimeout(_ => { this.splashScreen.hide(); }, 2500);
     });
   }
 }

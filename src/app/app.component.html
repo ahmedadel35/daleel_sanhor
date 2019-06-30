@@ -8,7 +8,7 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages let last = index">
             <ion-item *ngIf="p.title !== 'Item'" [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
@@ -16,6 +16,27 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+        </ion-list>
+        <ion-list class="share">
+          <ion-item>
+            <ul>
+              <li>
+                <ion-button class='fb' fill='outline' size='default' color='primary' href='http://www.facebook.com/sharer.php?m2w&s=100&p[url]=daleelsanhorforhome&p[title]=daleelsanhor'>
+                  <ion-icon name='logo-facebook' slot='icon-only'></ion-icon>
+                </ion-button>
+              </li>
+              <li>
+                <ion-button class='tw' fill='outline' size='default' color='secondary' href='http://mobile.twitter.com/home?status=dalellsanhor'>
+                  <ion-icon name='logo-twitter' slot='icon-only'></ion-icon>
+                </ion-button>
+              </li>
+              <li>
+                <ion-button class='wh' fill='outline' size='default' color='success' href='https://wa.me/?text=daleelsanhor'>
+                  <ion-icon name='logo-whatsapp' slot='icon-only'></ion-icon>
+                </ion-button>
+              </li>
+            </ul>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ion-menu>

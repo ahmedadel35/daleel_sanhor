@@ -12,7 +12,51 @@
     background: gray url("../assets/img/home_bg.jpeg") fixed center center no-repeat;
     background-size: cover;
   }
-  ion-content, ion-row, ion-title, ion-card *{
+  ion-input, ion-content, ion-row, ion-title, ion-card *{
     font-family: "DroidKufi", Helvetica, sans-serif, Arial;
     font-size: small;
   }
+  .share {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+  }
+  .share ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+  }
+  .share li{
+    display: inline;
+  }
+  ion-button{
+    transition: background ease .5s;
+  }
+  .fb:hover,
+  .fb:active,
+  .fb:focus{
+    background: var(--ion-color-primary);
+  }
+  .tw:hover,
+  .tw:active,
+  .tw:focus{
+    background: var(--ion-color-secondary);
+  }
+  .wh:hover,
+  .wh:active,
+  .wh:focus{
+    background: var(--ion-color-success);
+  }
+  .fb:hover ion-icon,
+  .fb:active ion-icon,
+  .fb:focus ion-icon,
+  .tw:hover ion-icon,
+  .tw:active ion-icon,
+  .tw:focus ion-icon,
+  .wh:hover ion-icon,
+  .wh:active ion-icon,
+  .wh:focus ion-icon  {
+    color: #fff;
+  }
+  

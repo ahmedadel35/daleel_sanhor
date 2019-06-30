@@ -15,9 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileUploadModule } from 'ng2-file-upload';
 
-import { File } from '@ionic-native/File/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
-
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
@@ -41,8 +38,6 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
     CallNumber,
     AdMobFree,
     AdmobFreeService,
-    File,
-    FileTransfer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

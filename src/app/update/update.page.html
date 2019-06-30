@@ -16,15 +16,6 @@
       <ion-col>
         <ion-card text-center>
             <ion-card-header>
-              <ion-button fill='outline' expand='block' color='success' (click)="downloadImage()">
-                Download
-              </ion-button>
-              <img *ngIf="src.length" [src]='src' >
-              <div class="progress-outer">
-			          <div class="progress-inner" [style.width]="progress + '%'">
-			          {{progress}}%
-			          </div>
-			        </div>
               <ion-button fill='solid' expand='block' color='primary' (click)='lookforUpdate()' [disabled]='searching || downloading'>
                 البحث عن تحديثات
               </ion-button>

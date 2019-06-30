@@ -3,9 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Storage } from '@ionic/storage';
-import { File } from '@ionic-native/File/ngx';
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
-
 import { ToastController } from '@ionic/angular';
 
 const URL = 'http://localhost/daleel/api/update.php';
@@ -22,8 +19,6 @@ const headers = new HttpHeaders({
 })
 export class UpdatePage implements OnInit {
 
-  public src = '';
-  public progress = 0;
   public showLoader = false;
   public hasUpdate = false;
   public searching: boolean;
@@ -41,8 +36,6 @@ export class UpdatePage implements OnInit {
   constructor(
     private http: HttpClient,
     private storage: Storage,
-    private file: File,
-    private ft: FileTransfer,
     public toast: ToastController) { }
 
   lookforUpdate() {
@@ -53,7 +46,7 @@ export class UpdatePage implements OnInit {
 
     // retrive update token from storage
     this.storage.get('update_token').then(upToken => {
-      console.log(upToken);
+      // console.log(upToken);
       Body += upToken;
       this.checkForUpdate(Body);
     });
@@ -77,13 +70,13 @@ export class UpdatePage implements OnInit {
       this.showLoader = false;
       this.searching = false;
       this.presentToast(this.errMes);
-      console.log(err.error.error.message);
-      console.log(err.error.text);
+      // console.log(err.error.error.message);
+      // console.log(err.error.text);
     });
   }
 
   update() {
-    // this.downloading = true;
+    this.downloading = true;
     this.showLoader = true;
 
     let Body = 'req=update&token=' + Token + '&upToken=';
@@ -102,8 +95,10 @@ export class UpdatePage implements OnInit {
         const arr = [];
         // update storage update_token for another update
         // to prevent dublicate updates
-        this.storage.set('update_tokenee', res[0].updateToken).then(s => {
+        this.storage.set('update_token', res[0].updateToken).then(s => {
           this.updateStorage(res);
+          this.showLoader = false;
+          this.downloading = false;
         });
       }
     }, err => {
@@ -132,39 +127,6 @@ export class UpdatePage implements OnInit {
       const qq = await this.storage.set(key, JSON.stringify(keyVal));
 
     }
-  }
-
-  async downloadImage() {
-    const downloadUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPGY0t9glwZVlmCIMx63swXOr8vYL9bhugNUPC0Qm6XnCW1rry';
-    const path = this.file.externalApplicationStorageDirectory;
-    const dir = 'img';
-
-    // check if img folde exists
-    this.file.checkDir(path, dir)
-    .then(fe => {
-      alert('folder exists');
-    }).catch(err => {
-      alert('dir not exitst');
-      this.file.createDir(path, dir, true)
-      .then(_ => {
-        alert('files created ');
-      });
-    });
-
-    // alert(fileExists);
-
-    const transfer: FileTransferObject = this.ft.create();
-    // alert(transfer);
-
-    transfer.download(downloadUrl, path + '/myimage' + Math.random() + '.png')
-    .then(entry => {
-      let url = entry.toURL();
-      this.src = url;
-      alert(url);
-      alert('fileTransfer.download data ** ** ** **:' + JSON.stringify(entry));
-    }, (err) => {
-      alert('downloadfile() error: ' + JSON.stringify(err));
-    });
   }
 
   async presentToast(mes) {

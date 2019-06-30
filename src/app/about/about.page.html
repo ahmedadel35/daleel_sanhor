@@ -19,13 +19,33 @@
               <br />
               <br />
               <ion-title id='contact'>
-                <b>للتواصل:</b><span> إستاذ/ محمد</span>
+                <b>للتواصل:</b>
                 <br />
                 <br />
-                <ion-button shape='round' fill='outline' color='primary' id='tell-number' (click)="call('01066204610')">
-                  <ion-icon name='call' slot='start'></ion-icon>
-                  01066204610
-                </ion-button>
+                <ion-list lines='full'>
+                  <ion-item>
+                    <span> م. محمود</span>
+                    <ion-button shape='round' fill='outline' color='primary' id='tell-number' (click)="call('01024024908')" slot='end'>
+                      <ion-icon name='call' slot='start'></ion-icon>
+                      01024024908
+                    </ion-button>
+                  </ion-item>
+                  <ion-item>
+                    <span> م. أحمد</span>
+                    <ion-button shape='round' fill='outline' color='primary' id='tell-number' (click)="call('01024900988')" slot='end'>
+                      <ion-icon name='call' slot='start'></ion-icon>
+                      01024900988
+                    </ion-button>
+                  </ion-item>
+                  <ion-item>
+                    <span> إستاذ/ محمد</span>
+                    <ion-button shape='round' fill='outline' color='primary' id='tell-number' (click)="call('01066204610')" slot='end'>
+                      <ion-icon name='call' slot='start'></ion-icon>
+                      01066204610
+                    </ion-button>
+                  </ion-item>
+                </ion-list>
+                
               </ion-title>
           </ion-card-title>
         </ion-card-header>
@@ -40,7 +60,7 @@
   <ion-toolbar color='primary'>
     
     <ion-title dir='ltr' id='rights'>
-      designed with <ion-icon name='heart'></ion-icon> by <a href='https://wa.me/201143647417'>the<b>D</b>eveloper</a> and <a href='https://wa.me/201024900988'>Elmo</a>
+      designed with <ion-icon name='heart'></ion-icon> by <a href='https://wa.me/201143647417'>the<b>D</b>eveloper</a> and <a href='https://wa.me/201024900988'>ELmotaym</a>
     </ion-title>
   </ion-toolbar>
 </ion-footer>
