@@ -10,8 +10,8 @@ import { Platform } from '@ionic/angular';
 @Injectable()
 export class AdmobFreeService {
 
-  private bannerId = 'ca-app-pub-3940256099942544/6300978111';
-  private intersId = 'ca-app-pub-3940256099942544/1033173712';
+  private bannerId = 'ca-app-pub-8847964607951258/6098340696';
+  private intersId = 'ca-app-pub-8847964607951258/3937235303';
 
   constructor(
     private admobFree: AdMobFree,

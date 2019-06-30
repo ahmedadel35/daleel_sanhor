@@ -55,7 +55,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString('#488aff');
-      setTimeout(_ => { this.splashScreen.hide(); }, 2500);
+      setTimeout(_ => { this.splashScreen.hide(); }, 4000);
     });
   }
 }
