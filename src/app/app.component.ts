@@ -16,25 +16,24 @@ export class AppComponent {
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'AddNew',
-      name: 'إضافة المزيد',
-      url: '/add-new',
-      icon: 'add-circle'
-    }
-    ,
+    // {
+    //   title: 'AddNew',
+    //   name: 'إضافة المزيد',
+    //   url: '/add-new',
+    //   icon: 'add-circle'
+    // },
     {
       title: 'About',
       name: 'من نحن',
       url: '/about',
       icon: 'information-circle'
     },
-    {
-      title: 'Update',
-      name: 'تحديث البيانات',
-      url: '/update',
-      icon: 'download'
-    },
+    // {
+    //   title: 'Update',
+    //   name: 'تحديث البيانات',
+    //   url: '/update',
+    //   icon: 'download'
+    // },
     {
       title: 'Item',
       name: '',

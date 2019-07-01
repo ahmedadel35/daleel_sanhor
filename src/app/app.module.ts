@@ -9,24 +9,24 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AdmobFreeService } from './admob-free.service';
-
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { FileUploadModule } from 'ng2-file-upload';
+// import { FileUploadModule } from 'ng2-file-upload';
 
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
+
+import { AdmobFreeService } from './admob-free.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    // HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    FileUploadModule,
+    // FileUploadModule,
     IonicStorageModule.forRoot({
       name: '__daleelsahnordb',
       driverOrder: ['indexeddb', 'sqlite', 'websql']

@@ -21,7 +21,8 @@ export class HomePage {
       'resturants', 'shops', 'donut', 'pharmasy', 'cleaner', 'beauty',
        'school', 'experments', 'doctors', 'eng', 'teachers', 'gadgets',
        'paints', 'gym', 'camera', 'hosbital', 'mobile', 'ps', 'clothes',
-       'gifts', 'vegtable', 'penaut', 'car', 'low', 'pulp', 'workers'  
+       'gifts', 'vegtable', 'penaut', 'car', 'low', 'pulp', 'workers',
+       'jobs'
     ];
 
     public loader: any;

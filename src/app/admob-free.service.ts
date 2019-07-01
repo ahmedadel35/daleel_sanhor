@@ -20,7 +20,7 @@ export class AdmobFreeService {
 
   BannerAd() {
     const bannerConfig: AdMobFreeBannerConfig = {
-      isTesting: true, //  Remove in production
+      // isTesting: true, //  Remove in production
       autoShow: true,
       id: this.bannerId
     };
@@ -34,7 +34,7 @@ export class AdmobFreeService {
   InterstitialAd() {
     const interConfig: AdMobFreeInterstitialConfig = {
       id: this.intersId,
-      isTesting: true,
+      // isTesting: true,
       autoShow: true
     };
     // Check if Ad is loaded
