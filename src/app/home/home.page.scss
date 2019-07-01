@@ -29,7 +29,7 @@ ion-row:first-of-type ion-col:first-of-type {
 ion-row:first-of-type ion-col:last-of-type {
   border-radius: 50% 0 0 0;
 }
-ion-row:nth-last-of-type(2) ion-col:first-of-type{
+ion-row:last-of-type ion-col:first-of-type{
   border-radius: 0 0 50% 50%;
 }
 // ion-row:nth-last-of-type(2) ion-col:last-of-type {

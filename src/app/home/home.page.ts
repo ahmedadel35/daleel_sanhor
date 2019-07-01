@@ -71,10 +71,6 @@ export class HomePage {
         this.router.navigate(['item'], navExtras);
     }
 
-    goToAdd() {
-      this.router.navigate(['add-new']);
-    }
-
     async showLoader() {
       this.busy = true;
       if (!this.loader) {

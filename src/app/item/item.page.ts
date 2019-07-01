@@ -32,7 +32,7 @@ export class ItemPage implements OnInit {
         this.page_title = this.router.getCurrentNavigation().extras.state.page.title;
         this.page_name = this.router.getCurrentNavigation().extras.state.page.name;
 
-        // load data from json file
+        // load data from storage file
         // with the same item name
         this.storage.get(this.page_name)
           .then(json => {
@@ -42,15 +42,15 @@ export class ItemPage implements OnInit {
             } else {
               // show toast to inform user it is empty section
               this.presentToast();
-              // go to add-new page
-              this.router.navigate(['add-new']);
+              // go to home page
+              this.router.navigate(['home']);
             }
           })
           .catch(error => { // error mostly will be json fileNotExists
             // show toast to inform user it is empty section
             this.presentToast();
-            // go to add-new page
-            this.router.navigate(['add-new']);
+            // go to home page
+            this.router.navigate(['home']);
           });
       }  else {
         // if no page name provided return to home page
@@ -61,7 +61,7 @@ export class ItemPage implements OnInit {
 
   async presentToast() {
     const toast = await this.toast.create({
-      message: 'لا يتوفر بيانات بهذا القسم ساعدنا بإضافة المزيد',
+      message: 'لا يتوفر بيانات بهذا القسم سيتم إضافة المزيد فى التحديثات القادمة',
       duration: 2000,
       showCloseButton: true,
       closeButtonText: 'إغلاق'
@@ -71,7 +71,7 @@ export class ItemPage implements OnInit {
 
   defaultImage(): string {
     const jpg = [
-      'beauty', 'doctors', 'eng', 'paints', 'teachers'
+      'beauty', 'doctors', 'eng', 'paints', 'teachers', 'jobs'
     ];
     const jpeg = [
       'camera', 'car', 'low', 'penaut', 'pulp', 'vegtable'
