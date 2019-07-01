@@ -8,7 +8,7 @@ import { ToastController, LoadingController } from '@ionic/angular';
 
 import { AdmobFreeService } from '../admob-free.service';
 
-const DOMAIN = 'http://localhost:80/daleel/';
+const DOMAIN = 'http://daleel-sanhor.epizy.com/';
 const URL = DOMAIN + 'api/create.php';
 
 const SIZE_LIMIT = 1024000; // 1mb
@@ -46,8 +46,8 @@ export class AddNewPage implements OnInit {
         'مقله وتسالى',
         'مراكز السيارات',
         'المهن الإخرى',
-		'المحامين',
-		'الادوات الصحية'
+        'المحامين',
+        'الادوات الصحية'
     ];
 
     public uploader: FileUploader = new FileUploader({

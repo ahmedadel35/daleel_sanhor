@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
 
-const URL = 'http://localhost/daleel/api/update.php';
+const URL = 'http://daleel-sanhor.epizy.com/update.php';
+const imgUrl = 'http://daleel-sanhor.epizy.com/assets/img/';
 const Token = '$2y$10$oLEwL4QeFfHEdTOeGtVBCucqnfP1buY';
 const headers = new HttpHeaders({
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -116,7 +117,7 @@ export class UpdatePage implements OnInit {
       const obj = {
           title: p.name,
           address: p.address,
-          img: p.img,
+          img: imgUrl + p.img,
           tells: [p.tell]
       };
 
