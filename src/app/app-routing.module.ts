@@ -16,9 +16,9 @@ const routes: Routes = [
   //   loadChildren: './list/list.module#ListPageModule'
   // },
   { path: 'item', loadChildren: './item/item.module#ItemPageModule' },
-  { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
-  { path: 'add-new', loadChildren: './add-new/add-new.module#AddNewPageModule' },
-  { path: 'update', loadChildren: './update/update.module#UpdatePageModule' }
+  { path: 'about', loadChildren: './about/about.module#AboutPageModule' } // ,
+  // { path: 'add-new', loadChildren: './add-new/add-new.module#AddNewPageModule' },
+  // { path: 'update', loadChildren: './update/update.module#UpdatePageModule' }
 ];
 
 @NgModule({
