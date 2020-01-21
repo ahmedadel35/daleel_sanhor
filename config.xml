@@ -2,7 +2,7 @@
 <widget id="com.daleel_sanhor.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>دليل سنهور</name>
     <description>an collection of places in markaz sanhor</description>
-    <author email="abo3adel35@gmail.com" href="https://wa.me/201143647417">Ahmed Adel TheDeveloper</author>
+    <author email="abo3adel35@gmail.com" href="https://wa.me/201143647417">Ahmed Adel the Ninja Coder</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
